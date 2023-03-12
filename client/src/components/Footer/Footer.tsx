@@ -1,5 +1,8 @@
+import style from './Footer.module.css'
 export const Footer:React.FC = () => {
     return (
-        <span>made with ❤❤❤ by Nikola</span>
+        <div className={style.footer}>
+            <span>made with ❤❤❤ by Nikola</span>
+        </div>
     )
 }

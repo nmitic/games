@@ -1,14 +1,17 @@
 .layout {
     display: grid;
-    padding: 60px 8px 0;
+    padding: 0 8px 0;
+    grid-template-rows: 60px 1fr auto;
+    height: 100vh;
 }
 
 .headerLayoutSlot {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 9999;
     width: 100%;
+    align-self: center;
 }
 
 .mainLayoutSlot {
@@ -17,7 +20,7 @@
 }
 
 .footerLayoutSlot {
-
+    padding: 8px;
 }
 
 @media screen and (min-width: 900px) {
