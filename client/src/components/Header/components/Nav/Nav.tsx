@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import {Link, useLocation} from "react-router-dom"
+import {Link, NavLink, useLocation} from "react-router-dom"
 import Icon, {allowedIcons} from "ui-lib-components/Icon"
 import style from './Nav.module.css'
 import Button from "../../../../ui-lib-components/Button";
@@ -43,28 +43,28 @@ export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu}) => {
             </Button>
             <ul className={style.navList}>
                 <li>
-                    <Link to="/">
-                        <div className={style.navItem}>
+                    <NavLink to="/" className={({isActive}) => isActive ? style.navLinkActive : ''}>
+                        <div className={`${style.navItem}`}>
                             <div className={style.navItemUpperPart} data-name="Home"></div>
                             <div className={style.navItemLowerPart} data-name="Home"></div>
                         </div>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="games">
+                    <NavLink to="games" className={({isActive}) => isActive ? style.navLinkActive : ''}>
                         <div className={style.navItem}>
                             <div className={style.navItemUpperPart} data-name="Games Library"></div>
                             <div className={style.navItemLowerPart} data-name="Games Library"></div>
                         </div>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="portfolio">
+                    <NavLink to="portfolio" className={({isActive}) => isActive ? style.navLinkActive : ''}>
                         <div className={style.navItem}>
                             <div className={style.navItemUpperPart} data-name="Games Portfolio"></div>
                             <div className={style.navItemLowerPart} data-name="Games Portfolio"></div>
                         </div>
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
             {createPortal(

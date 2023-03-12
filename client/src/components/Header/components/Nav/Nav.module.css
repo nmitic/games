@@ -87,19 +87,6 @@
     cursor: pointer;
     color: #cdcdcd;
 }
-.navItem:hover {
-    color: GOLD;
-}
-
-.navItem:hover:after {
-    width: 100%;
-}
-.navItem:hover .navItemLowerPart {
-    right: -5px;
-}
-.navItem:hover .navItemUpperPart {
-    left: -5px;
-}
 
 .navItem:after {
     content: "";
@@ -110,6 +97,24 @@
     top: 50%;
     background-color: GOLD;
     transition: all ease-in-out 0.3s;
+}
+
+.navItem:hover,
+.navLinkActive .navItem {
+    color: GOLD;
+}
+
+.navItem:hover:after,
+.navLinkActive .navItem:after {
+    width: 100%;
+}
+.navItem:hover .navItemLowerPart,
+.navLinkActive .navItem .navItemLowerPart{
+    right: -5px;
+}
+.navItem:hover .navItemUpperPart,
+.navLinkActive .navItem .navItemUpperPart {
+    left: -5px;
 }
 
 @media screen and (min-width: 500px) and (max-width: 768px){
