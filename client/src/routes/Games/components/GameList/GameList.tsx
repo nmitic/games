@@ -1,5 +1,5 @@
 import React from "react";
-import './GameList.css'
+import styles from './GameList.module.css'
 
 type GameListProps = {
     children: React.ReactNode,
@@ -7,7 +7,7 @@ type GameListProps = {
 }
 export const GameList: React.FC<GameListProps> = ({children, loading}) => {
     return (
-        <div className="game-list">
+        <div className={styles.gameList}>
             {
                 loading ? <h3>loading</h3> : children
             }

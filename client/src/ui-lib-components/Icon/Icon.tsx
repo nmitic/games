@@ -1,34 +1,36 @@
 import { ReactComponent as MenuIcon } from './assets/menu-icon.svg'
 import { ReactComponent as CloseIcon } from './assets/close-icon.svg'
-import './Icon.css'
+import style from './Icon.module.css'
 import React from "react";
 export enum allowedIcons {
     menu = "menu",
     close = 'close'
 }
 
-enum allowedSizes {
+export enum allowedSizes {
     S = "S",
     M = 'M',
     L = "L"
 }
 
-enum allowedColor {
+export enum allowedColor {
     black = "black",
     blue = "blue",
-    orange = "orange"
+    orange = "orange",
+    gold = "gold"
 }
 
 const sizeToClassNameMap = {
-     [allowedSizes.S]: "icon-s",
-     [allowedSizes.M]: "icon-m",
-     [allowedSizes.L]: "icon-l",
+     [allowedSizes.S]: style.iconS,
+     [allowedSizes.M]: style.iconM,
+     [allowedSizes.L]: style.iconL,
  }
 
 const colorToClassNameMap = {
-    [allowedColor.black]: "icon-black",
-    [allowedColor.blue]: "icon-blue",
-    [allowedColor.orange]: "icon-orange",
+    [allowedColor.black]: style.iconBlack,
+    [allowedColor.blue]: style.iconBlue,
+    [allowedColor.orange]: style.iconOrange,
+    [allowedColor.gold]: style.iconGold,
 }
 
 const iconNameToSvgMap = {
@@ -40,15 +42,17 @@ type IconProps = {
     iconName: allowedIcons,
     color?: allowedColor,
     size?: allowedSizes,
-    innerRef?: React.RefObject<SVGSVGElement>
+    innerRef?: React.RefObject<SVGSVGElement>,
+    [x:string]: any
 }
 
 
-const Icon:React.FC<IconProps> = ({innerRef, iconName, color = allowedColor.black, size = allowedSizes.M}) => {
-    const classNames = `icon ${sizeToClassNameMap[size]} ${colorToClassNameMap[color]} `
+const Icon:React.FC<IconProps> = ({innerRef, iconName, color = allowedColor.black, size = allowedSizes.M, rest}) => {
+    const classNames =
+        `${style.icon} ${rest?.className ? rest?.className : ''} ${sizeToClassNameMap[size]} ${colorToClassNameMap[color]} `
     const IconToRender = iconNameToSvgMap[iconName]
 
-    return <IconToRender className={classNames} ref={innerRef}/>
+    return <IconToRender className={classNames} ref={innerRef} {...rest}/>
 }
 
 export default Icon

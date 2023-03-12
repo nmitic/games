@@ -1,6 +1,6 @@
 import React from "react";
 import {gameDataType} from "../../../Root/Root";
-import './GameListItem.css'
+import style from './GameListItem.module.css'
 import {Link} from "react-router-dom";
 
 export type GameListItemProps = {
@@ -20,7 +20,7 @@ export const GameListItem:React.FC<GameListItemProps> = ({data, addPortfolioGame
                 state={{data}}
             >
                 <h1>{name}</h1>
-                <picture className="game-list-item-picture">
+                <picture className={style.gameListItemPicture}>
                     {/*<source media="(max-width: 799px)" srcSet="elva-480w-close-portrait.jpg"/>*/}
                     {/*<source media="(min-width: 800px)" srcSet="elva-800w.jpg"/>*/}
                     <img

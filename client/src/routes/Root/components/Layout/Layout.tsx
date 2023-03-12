@@ -1,5 +1,5 @@
 import React from "react";
-import './Layout.css'
+import style from './Layout.module.css'
 
 type LayoutProps = {
     header: React.ReactNode,
@@ -13,10 +13,10 @@ export const Layout:React.FC<LayoutProps> =
          footer
     }) => {
     return (
-        <div className="layout">
-            <header className="header-layout-slot">{header}</header>
-            <main className="main-layout-slot ">{main}</main>
-            <footer className="footer-layout-slot">{footer}</footer>
+        <div className={style.layout}>
+            <header className={style.headerLayoutSlot}>{header}</header>
+            <main className={style.mainLayoutSlot}>{main}</main>
+            <footer className={style.footerLayoutSlot}>{footer}</footer>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Button, {ButtonCoverEffect} from "../../ui-lib-components/Button";
 
 type GameSearchProps = {
     onSearch: (searchTerm: string) => void
@@ -17,7 +18,7 @@ export const GameSearch:React.FC<GameSearchProps> = ({onSearch}) => {
     return (
         <form action="Games/components" onSubmit={(e) => handleSubmit(e)}>
             <input type="text" name="searchTerm"/>
-            <button type="submit">search</button>
+            <ButtonCoverEffect type="submit">Search</ButtonCoverEffect>
         </form>
     )
 }

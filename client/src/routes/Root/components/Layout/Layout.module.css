@@ -1,0 +1,19 @@
+.layout {
+    display: grid;
+    padding-top: 60px;
+}
+
+.headerLayoutSlot {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+
+.mainLayoutSlot {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.footerLayoutSlot {
+
+}

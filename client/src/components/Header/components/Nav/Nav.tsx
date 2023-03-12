@@ -1,19 +1,20 @@
 import React, {useEffect} from "react"
 import {Link, useLocation} from "react-router-dom"
 import Icon, {allowedIcons} from "ui-lib-components/Icon"
-import './Nav.css'
+import style from './Nav.module.css'
 import Button from "../../../../ui-lib-components/Button";
+import {createPortal} from "react-dom";
+import {allowedColor, allowedSizes} from "../../../../ui-lib-components/Icon/Icon";
 
 type NavProps = {
     isMenuOpen: Boolean,
     closeMenu: () => void,
-    innerRef: React.RefObject<HTMLElement>
 }
 
-export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu, innerRef}) => {
+export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu}) => {
     const location = useLocation()
-    const classNames = `nav ${isMenuOpen && 'nav-open'}`
-
+    const classNames = `${style.nav} ${isMenuOpen ? style.navOpen : ''}`
+    const backdropClassNames = `${style.navBackdrop} ${isMenuOpen ? style.navBackdropOpen : ''}`
     const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
             closeMenu()
@@ -21,7 +22,7 @@ export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu, innerRef}) => {
     }
 
     useEffect(() => {
-        closeMenu()
+        // closeMenu()
     }, [location])
 
     useEffect(() => {
@@ -33,22 +34,43 @@ export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu, innerRef}) => {
     }, [])
 
     return (
-        <nav className={classNames} ref={innerRef}>
-            <Button onClick={closeMenu}>
-                <Icon iconName={allowedIcons.close} />
+        <nav className={classNames}>
+            <Button onClick={closeMenu} >
+                <Icon
+                    iconName={allowedIcons.close}
+                    color={allowedColor.gold}
+                />
             </Button>
-            <ul className="nav-list">
-                <li>
-                    <Link to="/">Home</Link>
+            <ul className={style.navList}>
+                <li className={style.navListItem}>
+                    <Link to="/">
+                        <div className={style.navItem}>
+                            <div className={style.navItemUpperPart} data-name="Home"></div>
+                            <div className={style.navItemLowerPart} data-name="Home"></div>
+                        </div>
+                    </Link>
+                </li>
+                <li className={style.navListItem}>
+                    <Link to="games">
+                        <div className={style.navItem}>
+                            <div className={style.navItemUpperPart} data-name="Games Library"></div>
+                            <div className={style.navItemLowerPart} data-name="Games Library"></div>
+                        </div>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="games">Games Library</Link>
-                </li>
-                <li>
-                    <Link to="portfolio">Games Portfolio</Link>
+                    <Link to="portfolio">
+                        <div className={style.navItem}>
+                            <div className={style.navItemUpperPart} data-name="Games Portfolio"></div>
+                            <div className={style.navItemLowerPart} data-name="Games Portfolio"></div>
+                        </div>
+                    </Link>
                 </li>
             </ul>
-            {isMenuOpen && <div className="nav-backdrop" onClick={closeMenu}/>}
+            {createPortal(
+                <div className={backdropClassNames} onClick={closeMenu}/>,
+                document.body
+            )}
         </nav>
     )
 }

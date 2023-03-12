@@ -1,0 +1,80 @@
+.button {
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.primaryType {
+    border: 2px solid #222;
+    background: #ffffff;
+}
+
+.goldType {
+    border: 2px solid #222;
+    background: gold;
+}
+
+.buttonCoverEffect {
+    padding: 10px 20px;
+    border: 2px solid gold;
+    color: gold;
+    background-color: #222;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: monospace;
+    letter-spacing: -1px;
+    z-index: 1;
+}
+
+.coverEffectDynamic,
+.coverEffectDynamicInner {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    transition: all ease 0.5s;
+}
+.coverEffectDynamic {
+    background-color: #fff;
+    color: #222;
+    overflow: hidden;
+}
+.animationFromLeft:hover .coverEffectDynamic {
+    transform: translateX(-100%);
+}
+.animationFromLeft:hover .coverEffectDynamicInner {
+    transform: translateX(100%);
+}
+
+.animationFromRight:hover .coverEffectDynamic {
+    transform: translateX(100%);
+}
+.animationFromRight:hover .coverEffectDynamicInner {
+    transform: translateX(-100%);
+}
+
+.animationFromTop:hover .coverEffectDynamic {
+    transform: translateY(100%);
+}
+.animationFromTop:hover .coverEffectDynamicInner {
+    transform: translateY(-100%);
+}
+
+.animationFromBottom:hover .button-cover-effect-dynamic {
+    transform: translateY(-100%);
+}
+.animationFromBottom:hover .button-cover-effect-dynamic-inner {
+    transform: translateY(100%);
+}

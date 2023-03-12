@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from 'react';
 import {PortfolioContext, PortfolioContextType} from "../../context/portoflioContext";
-import {GameSearch} from "../Games/components/GameSearch";
+import {GameSearch} from "../../components/GameSearch/GameSearch";
 import {GameList} from "../Games/components/GameList/GameList";
 import {GameListItem} from "../Games/components/game-list-item/GameListItem";
 import {gameDataType, gamesDataType} from "../Root/Root";
@@ -34,14 +34,14 @@ export const Portfolio = () => {
             <GameSearch onSearch={(searchTerm) => handleSearch(searchTerm)}/>
             <GameList>
                 {
-                    searchResults.length && searchResults.map(data =>
+                    searchResults.length ? searchResults.map(data =>
                         <GameListItem
                             data={data}
                             addPortfolioGames={handleAddPortfolioGames}
                             removePortfolioGames={handleRemovePortfolioGames}
                             key={data.short}
                         />
-                    )
+                    ) : null
                 }
             </GameList>
         </div>

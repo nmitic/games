@@ -1,0 +1,34 @@
+.icon {
+    display: block;
+}
+
+.iconS {
+    width: 16px;
+    height: 16px;
+}
+
+.iconM {
+    width: 32px;
+    height: 32px;
+}
+
+.iconL {
+    width: 64px;
+    height: 64px;
+}
+
+.iconBlack {
+    fill: black;
+}
+
+.iconBlue {
+    fill: blue;
+}
+
+.iconOrange {
+    fill: orange;
+}
+
+.iconGold {
+    fill: gold;
+}
