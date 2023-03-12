@@ -1,8 +1,10 @@
-import {Outlet} from 'react-router-dom'
+import {Link, Outlet, useLocation} from 'react-router-dom'
 import React from "react";
 import {Layout} from "./components/Layout/Layout";
 import {Header} from "components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
+import {ButtonCoverEffect} from "../../ui-lib-components/Button";
+import {allowedCoverEffectFrom} from "../../ui-lib-components/Button/Button";
 
 export type gameDataType = {
     name: string,
@@ -24,10 +26,15 @@ export const loader = async(): Promise<{games: gamesDataType}> => {
 }
 
 export const Root = () => {
+    const isNotRootRoute = useLocation().pathname !== '/'
     return (
         <Layout
             header={<Header />}
-            main={<Outlet />}
+            main={isNotRootRoute ? <Outlet /> : (
+                <Link to="games">
+                    <ButtonCoverEffect coverEffectFrom={allowedCoverEffectFrom.right}>Explore Games Now</ButtonCoverEffect>
+                </Link>
+            )}
             footer={<Footer />}
         />
     )

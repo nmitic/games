@@ -4,6 +4,9 @@ export const Game = () => {
     const data = location.state?.data
 
     return (
-        <h2>{data.name}</h2>
+        <article>
+            <h2>{data.name}</h2>
+
+        </article>
     )
 }
