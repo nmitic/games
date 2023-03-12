@@ -1,19 +1,28 @@
 .layout {
     display: grid;
-    padding-top: 60px;
+    padding: 60px 8px 0;
 }
 
 .headerLayoutSlot {
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 9999;
+    background: #222;
+    width: 100%;
 }
 
 .mainLayoutSlot {
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .footerLayoutSlot {
 
+}
+
+@media screen and (min-width: 900px) {
+    .mainLayoutSlot {
+        width: 800px;
+    }
 }

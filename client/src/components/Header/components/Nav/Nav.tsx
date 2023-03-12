@@ -22,7 +22,7 @@ export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu}) => {
     }
 
     useEffect(() => {
-        // closeMenu()
+        closeMenu()
     }, [location])
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu}) => {
                 />
             </Button>
             <ul className={style.navList}>
-                <li className={style.navListItem}>
+                <li>
                     <Link to="/">
                         <div className={style.navItem}>
                             <div className={style.navItemUpperPart} data-name="Home"></div>
@@ -50,7 +50,7 @@ export const Nav:React.FC<NavProps> = ({isMenuOpen, closeMenu}) => {
                         </div>
                     </Link>
                 </li>
-                <li className={style.navListItem}>
+                <li>
                     <Link to="games">
                         <div className={style.navItem}>
                             <div className={style.navItemUpperPart} data-name="Games Library"></div>

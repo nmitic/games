@@ -11,20 +11,22 @@ export type GameListItemProps = {
 export const GameListItem:React.FC<GameListItemProps> = ({data, addPortfolioGames, removePortfolioGames}) => {
     const {name, short} = data
     const alt = `image game of ${name}`
-    const src = `http://www.royalgames.com/images/games/${short}/tournamentPage/${short}_764x260.jpg`
+    const srcBig = `http://www.royalgames.com/images/games/${short}/tournamentPage/${short}_764x260.jpg`
+    const srcSmall = `http://www.royalgames.com/images/games/${short}/${short}_170x80.gif`
+
 
     return (
         <article>
             <Link
                 to={`${data.short}`}
                 state={{data}}
+                className={style.gameListLink}
             >
                 <h1>{name}</h1>
                 <picture className={style.gameListItemPicture}>
-                    {/*<source media="(max-width: 799px)" srcSet="elva-480w-close-portrait.jpg"/>*/}
-                    {/*<source media="(min-width: 800px)" srcSet="elva-800w.jpg"/>*/}
+                    <source media="(min-width: 400px)" srcSet={srcBig}/>
                     <img
-                        src={src}
+                        src={srcSmall}
                         alt={alt}
                     />
                 </picture>

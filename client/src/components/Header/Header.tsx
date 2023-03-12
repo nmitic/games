@@ -6,7 +6,7 @@ import Button from "ui-lib-components/Button";
 import {allowedTypes} from "../../ui-lib-components/Button/Button";
 import {allowedColor} from "../../ui-lib-components/Icon/Icon";
 export const Header:React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(true)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const openMenu = () => setIsMenuOpen(true)
     const closeMenu = () => setIsMenuOpen(false)
 

@@ -1,4 +1,6 @@
 .header {
     height: 60px;
-    padding: 8px;
+    display: flex;
+    align-content: center;
+    padding: 0 8px;
 }
