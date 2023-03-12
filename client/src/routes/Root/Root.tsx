@@ -2,6 +2,7 @@ import {Outlet} from 'react-router-dom'
 import React from "react";
 import {Layout} from "./components/Layout/Layout";
 import {Header} from "components/Header/Header";
+import {Footer} from "../../components/Footer/Footer";
 
 export type gameDataType = {
     name: string,
@@ -27,7 +28,7 @@ export const Root = () => {
         <Layout
             header={<Header />}
             main={<Outlet />}
-            footer={'footer'}
+            footer={<Footer />}
         />
     )
 }
