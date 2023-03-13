@@ -8,6 +8,7 @@ export enum allowedVariants {
     h4 = 'h4',
     h5 = 'h5',
     h6 = 'h6',
+    p = 'p'
 }
 
 export enum allowedHtmlTag {
@@ -48,6 +49,7 @@ const variantToClassNameMap = {
     [allowedVariants.h4]: style.h4,
     [allowedVariants.h5]: style.h5,
     [allowedVariants.h6]: style.h6,
+    [allowedVariants.p] : style.p
 }
 
 const Typography: React.FC<TypographyProps> =
