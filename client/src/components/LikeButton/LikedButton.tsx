@@ -1,7 +1,6 @@
-import Button from "../../ui-lib-components/Button";
-import Icon, {allowedIcons} from "../../ui-lib-components/Icon";
-import {allowedColor} from "../../ui-lib-components/Icon/Icon";
-import React from "react";
+import Button from "../../ui-lib-components/Button"
+import Icon, {allowedIcons} from "../../ui-lib-components/Icon"
+import {allowedColor} from "../../ui-lib-components/Icon/Icon"
 
 type LikedButtonProps = {
     isLiked: boolean | undefined,

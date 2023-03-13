@@ -1,10 +1,10 @@
-import React from "react";
-import {gameDataType} from "../../../Root/Root";
+import React from "react"
+import {gameDataType} from "../../../Root/Root"
 import style from './GameListItem.module.css'
-import {Link} from "react-router-dom";
-import Typography from "ui-lib-components/Typography";
-import {allowedColors} from "../../../../ui-lib-components/Typography/Typography";
-import {LikedButton} from "../../../../components/LikeButton/LikedButton";
+import {Link} from "react-router-dom"
+import Typography from "ui-lib-components/Typography"
+import {allowedColors} from "../../../../ui-lib-components/Typography/Typography"
+import {LikedButton} from "../../../../components/LikeButton/LikedButton"
 
 export type GameListItemProps = {
     data: gameDataType,

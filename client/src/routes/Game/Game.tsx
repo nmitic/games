@@ -1,10 +1,10 @@
-import {useLocation} from "react-router-dom";
-import Typography from "../../ui-lib-components/Typography";
-import {allowedColors, allowedVariants} from "../../ui-lib-components/Typography/Typography";
+import {useLocation} from "react-router-dom"
+import Typography from "../../ui-lib-components/Typography"
+import {allowedColors, allowedVariants} from "../../ui-lib-components/Typography/Typography"
 import style from './Game.module.css'
-import React from "react";
-import {LikedButton} from "../../components/LikeButton/LikedButton";
-import {useGames} from "../Root/Root";
+import React from "react"
+import {LikedButton} from "../../components/LikeButton/LikedButton"
+import {useGames} from "../Root/Root"
 
 export const Game = () => {
     const location = useLocation()

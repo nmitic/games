@@ -1,5 +1,4 @@
-import React from "react";
-import {ButtonCoverEffect} from "../../ui-lib-components/Button";
+import {ButtonCoverEffect} from "../../ui-lib-components/Button"
 import style from './GameSearch.module.css'
 
 type GameSearchProps = {

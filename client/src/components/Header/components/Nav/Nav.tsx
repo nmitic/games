@@ -1,10 +1,10 @@
 import React, {useEffect} from "react"
-import {Link, NavLink, useLocation} from "react-router-dom"
+import {NavLink, useLocation} from "react-router-dom"
 import Icon, {allowedIcons} from "ui-lib-components/Icon"
 import style from './Nav.module.css'
-import Button from "../../../../ui-lib-components/Button";
-import {createPortal} from "react-dom";
-import {allowedColor, allowedSizes} from "../../../../ui-lib-components/Icon/Icon";
+import Button from "../../../../ui-lib-components/Button"
+import {createPortal} from "react-dom"
+import {allowedColor, allowedSizes} from "../../../../ui-lib-components/Icon/Icon"
 
 type NavProps = {
     isMenuOpen: Boolean,

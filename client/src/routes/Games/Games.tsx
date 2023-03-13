@@ -1,8 +1,8 @@
-import {GameList} from "./components/GameList/GameList";
-import {GameListItem} from "./components/game-list-item/GameListItem";
-import {gameDataType, gamesDataType, useGames} from "../Root/Root";
+import {GameList} from "./components/GameList/GameList"
+import {GameListItem} from "./components/game-list-item/GameListItem"
+import {gameDataType, gamesDataType, useGames} from "../Root/Root"
 import {useState} from "react";
-import {GameSearch} from "../../components/GameSearch/GameSearch";
+import {GameSearch} from "../../components/GameSearch/GameSearch"
 
 export const Games = () => {
     const {games, addPortfolioGames, removePortfolioGames } = useGames()
