@@ -21,6 +21,10 @@
     fill: black;
 }
 
+.iconWhite {
+    fill: #fff;
+}
+
 .iconBlue {
     fill: blue;
 }

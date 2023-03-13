@@ -1,7 +1,7 @@
 .layout {
     display: grid;
     padding: 0 8px 0;
-    grid-template-rows: 60px 1fr auto;
+    grid-template-rows: 60px 1fr 60px;
     height: 100vh;
 }
 
@@ -21,6 +21,7 @@
 
 .footerLayoutSlot {
     padding: 8px;
+    align-self: center;
 }
 
 @media screen and (min-width: 900px) {

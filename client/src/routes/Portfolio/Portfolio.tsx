@@ -1,16 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {PortfolioContext, PortfolioContextType} from "../../context/portoflioContext";
+import React, {useEffect, useState} from 'react';
 import {GameSearch} from "../../components/GameSearch/GameSearch";
 import {GameList} from "../Games/components/GameList/GameList";
 import {GameListItem} from "../Games/components/game-list-item/GameListItem";
-import {gameDataType, gamesDataType} from "../Root/Root";
+import {gameDataType, gamesDataType, useGames} from "../Root/Root";
 import Typography from "../../ui-lib-components/Typography";
 import {allowedHtmlTag, allowedVariants} from "../../ui-lib-components/Typography/Typography";
 import {Link} from "react-router-dom";
 
 
 export const Portfolio = () => {
-    const {portfolioGames, addPortfolioGames, removePortfolioGames, searchPortfolioGames} = useContext(PortfolioContext) as PortfolioContextType
+    const {portfolioGames, addPortfolioGames, removePortfolioGames, searchGames} = useGames()
     const [searchResults, setSearchResult] = useState<gamesDataType>([])
 
     useEffect(() => {
@@ -19,7 +18,7 @@ export const Portfolio = () => {
 
 
     const handleSearch = (searchTerm: string) => {
-        const matches = searchPortfolioGames(searchTerm)
+        const matches = searchGames(portfolioGames, searchTerm)
 
         setSearchResult(matches)
     }

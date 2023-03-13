@@ -1,5 +1,5 @@
-import {Link, Outlet, useLocation} from 'react-router-dom'
-import React from "react";
+import {Link, Outlet, useLoaderData, useLocation, useOutletContext} from 'react-router-dom'
+import React, {useState} from "react";
 import {Layout} from "./components/Layout/Layout";
 import {Header} from "components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
@@ -14,31 +14,83 @@ export type gameDataType = {
     short: string,
     url: string,
     tags: string,
-    hasBoosters: boolean
+    hasBoosters: boolean,
+    liked?: boolean
 }
 
 export type gamesDataType = gameDataType[]
+
+type GamesContextType = {
+    games: gamesDataType,
+    addPortfolioGames: (gameToAdd: gameDataType) => gamesDataType,
+    removePortfolioGames: (gameToRemove: gameDataType) => gamesDataType,
+    searchGames: (dataSet: gamesDataType, searchTerm: string) => gamesDataType,
+    portfolioGames : gamesDataType
+};
+
+export const useGames = () => useOutletContext<GamesContextType>()
 
 export const loader = async (): Promise<{ games: gamesDataType }> => {
     const response = await fetch('http://localhost:12345/games.json')
     const {games} = await response.json()
 
-    return games
+    return games.map((game: gamesDataType) => ({...game, liked: false}))
 }
 
 export const Root = () => {
     const isNotRootRoute = useLocation().pathname !== '/'
+    const gamesData = useLoaderData() as gamesDataType
+    const [games, setGames] = useState<gamesDataType>(gamesData)
+
+    const addPortfolioGames = (gameToAdd: gameDataType) => {
+        const gamesAfterAdding = games.map((game) => {
+            if (game.name === gameToAdd.name) {
+                game.liked = true
+            }
+
+            return game
+        })
+
+        setGames(gamesAfterAdding)
+    }
+
+    const removePortfolioGames = (gameToAdd: gameDataType) => {
+        const gamesAfterRemoval = games.map((game) => {
+            if (game.name === gameToAdd.name) {
+                game.liked = false
+            }
+
+            return game
+        })
+        setGames(gamesAfterRemoval)
+    }
+
+    const searchGames = (dataSet: gamesDataType, searchTerm: string) => {
+        return dataSet.filter((game:gameDataType) => game.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    }
+
+    const portfolioGames = games.filter(game => game.liked)
+
     return (
         <Layout
             header={<Header/>}
-            main={isNotRootRoute ? <Outlet/> : (
+            main={isNotRootRoute ? <Outlet context={
+                {
+                    portfolioGames,
+                    games,
+                    addPortfolioGames,
+                    removePortfolioGames,
+                    searchGames
+                }}/> : (
                 <div className={style.root}>
                     <Typography
                         component={allowedHtmlTag.h1}
                         variant={allowedVariants.h4}
                     >
-                        Welcome to the most awesome but totally useless website where you can not really do much, just click here and there,
-                        but hey look at the navigation menu cool effects right? And how about this cool button hover effect?
+                        Welcome to the most awesome but totally useless website where you can not really do much, just
+                        click here and there,
+                        but hey look at the navigation menu cool effects right? And how about this cool button hover
+                        effect?
                     </Typography>
                     <Link to="games">
                         <ButtonCoverEffect

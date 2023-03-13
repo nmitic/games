@@ -1,18 +1,15 @@
 import {GameList} from "./components/GameList/GameList";
 import {GameListItem} from "./components/game-list-item/GameListItem";
-import {gameDataType, gamesDataType} from "../Root/Root";
-import {useLoaderData} from "react-router-dom";
-import {PortfolioContext, PortfolioContextType} from "../../context/portoflioContext";
-import {useContext, useState} from "react";
+import {gameDataType, gamesDataType, useGames} from "../Root/Root";
+import {useState} from "react";
 import {GameSearch} from "../../components/GameSearch/GameSearch";
 
 export const Games = () => {
-    const gamesData = useLoaderData() as gamesDataType
-    const {addPortfolioGames, removePortfolioGames} = useContext(PortfolioContext) as PortfolioContextType
-    const [searchResults, setSearchResult] = useState<gamesDataType>(gamesData)
+    const {games, addPortfolioGames, removePortfolioGames } = useGames()
+    const [searchResults, setSearchResult] = useState<gamesDataType>(games)
 
     const handleSearch = (searchTerm: string) => {
-        const matches = gamesData.filter((game:gameDataType) =>
+        const matches = games.filter((game:gameDataType) =>
             game.name.toLowerCase().includes(searchTerm.toLowerCase()))
         setSearchResult(matches)
     }

@@ -4,6 +4,7 @@ import style from './GameListItem.module.css'
 import {Link} from "react-router-dom";
 import Typography from "ui-lib-components/Typography";
 import {allowedColors} from "../../../../ui-lib-components/Typography/Typography";
+import {LikedButton} from "../../../../components/LikeButton/LikedButton";
 
 export type GameListItemProps = {
     data: gameDataType,
@@ -11,7 +12,7 @@ export type GameListItemProps = {
     removePortfolioGames: (game: gameDataType) => void,
 }
 export const GameListItem:React.FC<GameListItemProps> = ({data, addPortfolioGames, removePortfolioGames}) => {
-    const {name, short} = data
+    const {name, short, liked} = data
     const alt = `image game of ${name}`
     const srcBig = `http://www.royalgames.com/images/games/${short}/tournamentPage/${short}_764x260.jpg`
     const srcSmall = `http://www.royalgames.com/images/games/${short}/${short}_170x80.gif`
@@ -33,8 +34,11 @@ export const GameListItem:React.FC<GameListItemProps> = ({data, addPortfolioGame
                     />
                 </picture>
             </Link>
-            <button onClick={() => addPortfolioGames(data)}>Add game to portfolio</button>
-            <button onClick={() => removePortfolioGames(data)}>Remove game from portfolio</button>
+            <LikedButton
+                isLiked={liked}
+                onLike={() => addPortfolioGames(data)}
+                onUnLike={() => removePortfolioGames(data)}
+            />
         </article>
     )
 }

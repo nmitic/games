@@ -8,11 +8,11 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        loader: rootLoader,
         children: [
             {
                 path: "/games",
                 element: <Games />,
-                loader: rootLoader,
             },
             {
                 path: "/games/:gameId",
