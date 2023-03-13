@@ -21,8 +21,6 @@ export const loader = async (): Promise<{ games: gamesDataType }> => {
     const response = await fetch('http://localhost:12345/games.json')
     const {games} = await response.json()
 
-    await new Promise((resolve => setTimeout(resolve, 500)))
-
     return games
 }
 

@@ -30,7 +30,7 @@ export const PortfolioProvider: React.FC<PortfolioProviderProps> = ({children}) 
     }
 
     const searchPortfolioGames = (searchTerm: string) => {
-        return portfolioGames.filter((game:gameDataType) => game.name.includes(searchTerm))
+        return portfolioGames.filter((game:gameDataType) => game.name.toLowerCase().includes(searchTerm.toLowerCase()))
     }
 
     return (

@@ -12,7 +12,8 @@ export const Games = () => {
     const [searchResults, setSearchResult] = useState<gamesDataType>(gamesData)
 
     const handleSearch = (searchTerm: string) => {
-        const matches = gamesData.filter((game:gameDataType) => game.name.includes(searchTerm))
+        const matches = gamesData.filter((game:gameDataType) =>
+            game.name.toLowerCase().includes(searchTerm.toLowerCase()))
         setSearchResult(matches)
     }
 
