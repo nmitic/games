@@ -31,16 +31,46 @@ type GamesContextType = {
 export const useGames = () => useOutletContext<GamesContextType>()
 
 export const loader = async (): Promise<{ games: gamesDataType }> => {
+    const cachedGamesData = readDataFromBrowserStorage('games')
+
+    if (cachedGamesData) {
+        return cachedGamesData
+    }
+
     const response = await fetch('http://localhost:12345/games.json')
     const {games} = await response.json()
 
-    return games.map((game: gamesDataType) => ({...game, liked: false}))
+    const gamesState = games.map((game: gamesDataType) => ({...game, liked: false}))
+
+    persistDataIntoBrowserStorage(gamesState, 'games')
+
+    return gamesState
+}
+
+const persistDataIntoBrowserStorage = (data: {}, key: string) => {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+const readDataFromBrowserStorage = (key: string) => {
+    try {
+        const data = localStorage.getItem(key)
+        if (data) {
+            return JSON.parse(data)
+        }
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const Root = () => {
     const isNotRootRoute = useLocation().pathname !== '/'
     const gamesData = useLoaderData() as gamesDataType
     const [games, setGames] = useState<gamesDataType>(gamesData)
+
+    const handleSetGames = (games: gamesDataType) => {
+        setGames(games)
+        persistDataIntoBrowserStorage(games, 'games')
+    }
 
     const addPortfolioGames = (gameToAdd: gameDataType) => {
         const gamesAfterAdding = games.map((game) => {
@@ -51,7 +81,7 @@ export const Root = () => {
             return game
         })
 
-        setGames(gamesAfterAdding)
+        handleSetGames(gamesAfterAdding)
     }
 
     const removePortfolioGames = (gameToAdd: gameDataType) => {
@@ -62,7 +92,7 @@ export const Root = () => {
 
             return game
         })
-        setGames(gamesAfterRemoval)
+        handleSetGames(gamesAfterRemoval)
     }
 
     const searchGames = (dataSet: gamesDataType, searchTerm: string) => {
