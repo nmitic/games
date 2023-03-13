@@ -15,9 +15,10 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 
 const Button = (props: ButtonProps) => {
     const { styleType, ...rest } = props;
+    const customClassName = rest.className ? rest.className : ''
     const styleTypeClassName = styleType ? typeToClassNameMap[styleType] : ''
 
-    const className = `${style.button} ${rest.className} ${styleTypeClassName}`
+    const className = `${style.button} ${customClassName} ${styleTypeClassName}`
     return <button {...rest} className={className} />;
 }
 
@@ -41,9 +42,10 @@ interface ButtonCoverEffectProps extends ComponentPropsWithoutRef<"button"> {
 
 export const ButtonCoverEffect:React.FC<ButtonCoverEffectProps & ButtonProps> = ({children, coverEffectFrom = allowedCoverEffectFrom.top, ...rest}) => {
     const animationClassName = coverEffectToClassNameMap[coverEffectFrom]
+    const customClassName = rest.className ? rest.className : ''
 
     return (
-        <Button {...rest} className={`${style.buttonCoverEffect} ${animationClassName}`}>
+        <Button {...rest} className={`${style.buttonCoverEffect} ${animationClassName} ${customClassName}`}>
             <span>{children}</span>
             <div className={style.coverEffectDynamic}>
                 <span className={style.coverEffectDynamicInner}>{children}</span>

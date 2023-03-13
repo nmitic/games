@@ -54,7 +54,7 @@ export const Portfolio = () => {
                         component={allowedHtmlTag.p}
                         variant={allowedVariants.p}
                     >
-                        Add games to portfolio by <Link to="/games">exploring games</Link> and clicking the like button
+                        Add games to portfolio by <Link to="/games">exploring games</Link> and clicking the like button.
                     </Typography>
                 )
             }

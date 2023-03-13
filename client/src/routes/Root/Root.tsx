@@ -6,6 +6,8 @@ import {Footer} from "../../components/Footer/Footer";
 import {ButtonCoverEffect} from "../../ui-lib-components/Button";
 import {allowedCoverEffectFrom} from "../../ui-lib-components/Button/Button";
 import style from './Root.module.css';
+import Typography from "../../ui-lib-components/Typography";
+import {allowedHtmlTag, allowedVariants} from "../../ui-lib-components/Typography/Typography";
 
 export type gameDataType = {
     name: string,
@@ -31,9 +33,20 @@ export const Root = () => {
             header={<Header/>}
             main={isNotRootRoute ? <Outlet/> : (
                 <div className={style.root}>
+                    <Typography
+                        component={allowedHtmlTag.h1}
+                        variant={allowedVariants.h4}
+                    >
+                        Welcome to the most awesome but totally useless website where you can not really do much, just click here and there,
+                        but hey look at the navigation menu cool effects right? And how about this cool button hover effect?
+                    </Typography>
                     <Link to="games">
-                        <ButtonCoverEffect coverEffectFrom={allowedCoverEffectFrom.right}>Explore Games
-                            Now</ButtonCoverEffect>
+                        <ButtonCoverEffect
+                            coverEffectFrom={allowedCoverEffectFrom.right}
+                            className={style.exploreNowBtn}
+                        >
+                            Explore Games Now
+                        </ButtonCoverEffect>
                     </Link>
                 </div>
             )}
