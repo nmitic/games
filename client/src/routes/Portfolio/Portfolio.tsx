@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {GameSearch} from "../../components/GameSearch/GameSearch";
 import {GameList} from "../Games/components/GameList/GameList";
 import {GameListItem} from "../Games/components/game-list-item/GameListItem";
-import {gameDataType, gamesDataType, useGames} from "../Root/Root";
+import {gamesDataType, useGames} from "../Root/Root";
 import Typography from "../../ui-lib-components/Typography";
 import {allowedHtmlTag, allowedVariants} from "../../ui-lib-components/Typography/Typography";
 import {Link} from "react-router-dom";
@@ -23,14 +23,6 @@ export const Portfolio = () => {
         setSearchResult(matches)
     }
 
-    const handleAddPortfolioGames = (game:gameDataType) => {
-        setSearchResult(addPortfolioGames(game))
-    }
-
-    const handleRemovePortfolioGames = (game:gameDataType) => {
-        setSearchResult(removePortfolioGames(game))
-    }
-
     return (
         <div>
             {searchResults.length ? <GameSearch onSearch={(searchTerm) => handleSearch(searchTerm)}/> : null}
@@ -41,8 +33,8 @@ export const Portfolio = () => {
                             searchResults.map(data =>
                                 <GameListItem
                                     data={data}
-                                    addPortfolioGames={handleAddPortfolioGames}
-                                    removePortfolioGames={handleRemovePortfolioGames}
+                                    addPortfolioGames={addPortfolioGames}
+                                    removePortfolioGames={removePortfolioGames}
                                     key={data.short}
                                 />
                             )
