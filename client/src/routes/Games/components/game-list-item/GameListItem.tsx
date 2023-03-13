@@ -2,6 +2,8 @@ import React from "react";
 import {gameDataType} from "../../../Root/Root";
 import style from './GameListItem.module.css'
 import {Link} from "react-router-dom";
+import Typography from "ui-lib-components/Typography";
+import {allowedColors} from "../../../../ui-lib-components/Typography/Typography";
 
 export type GameListItemProps = {
     data: gameDataType,
@@ -22,7 +24,7 @@ export const GameListItem:React.FC<GameListItemProps> = ({data, addPortfolioGame
                 state={{data}}
                 className={style.gameListLink}
             >
-                <h1>{name}</h1>
+                <Typography color={allowedColors.gold}>{name}</Typography>
                 <picture className={style.gameListItemPicture}>
                     <source media="(min-width: 400px)" srcSet={srcBig}/>
                     <img

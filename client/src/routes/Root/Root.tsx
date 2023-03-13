@@ -5,6 +5,7 @@ import {Header} from "components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {ButtonCoverEffect} from "../../ui-lib-components/Button";
 import {allowedCoverEffectFrom} from "../../ui-lib-components/Button/Button";
+import style from './Root.module.css';
 
 export type gameDataType = {
     name: string,
@@ -16,7 +17,7 @@ export type gameDataType = {
 
 export type gamesDataType = gameDataType[]
 
-export const loader = async(): Promise<{games: gamesDataType}> => {
+export const loader = async (): Promise<{ games: gamesDataType }> => {
     const response = await fetch('http://localhost:12345/games.json')
     const {games} = await response.json()
 
@@ -29,13 +30,16 @@ export const Root = () => {
     const isNotRootRoute = useLocation().pathname !== '/'
     return (
         <Layout
-            header={<Header />}
-            main={isNotRootRoute ? <Outlet /> : (
-                <Link to="games">
-                    <ButtonCoverEffect coverEffectFrom={allowedCoverEffectFrom.right}>Explore Games Now</ButtonCoverEffect>
-                </Link>
+            header={<Header/>}
+            main={isNotRootRoute ? <Outlet/> : (
+                <div className={style.root}>
+                    <Link to="games">
+                        <ButtonCoverEffect coverEffectFrom={allowedCoverEffectFrom.right}>Explore Games
+                            Now</ButtonCoverEffect>
+                    </Link>
+                </div>
             )}
-            footer={<Footer />}
+            footer={<Footer/>}
         />
     )
 }
