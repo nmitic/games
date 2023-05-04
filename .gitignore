@@ -304,3 +304,5 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/react,macos,node,webstorm
 
 client/build
+
+/build
