@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/games/games-demo/static/css/main.6a06b7a1.css",
-    "main.js": "/games/games-demo/static/js/main.2b9acf6e.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/games/games-demo/static/js/787.c4e7f8f9.chunk.js",
-    "index.html": "/games/games-demo/index.html",
-    "static/media/like.svg": "/games/games-demo/static/media/like.4e78f7a8ed38c6215098f6e0cc751385.svg",
-    "static/media/close-icon.svg": "/games/games-demo/static/media/close-icon.a4386296f8cc40bc7a8e4adbe73d8d2e.svg",
-    "static/media/menu-icon.svg": "/games/games-demo/static/media/menu-icon.5bae51287519dcfc9ace7858eeb67b83.svg",
-    "main.6a06b7a1.css.map": "/games/games-demo/static/css/main.6a06b7a1.css.map",
-    "main.2b9acf6e.js.map": "/games/games-demo/static/js/main.2b9acf6e.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/games/games-demo/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.css": "/games/static/css/main.6a06b7a1.css",
+    "main.js": "/games/static/js/main.a1102c35.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/games/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/games/index.html",
+    "static/media/like.svg": "/games/static/media/like.4e78f7a8ed38c6215098f6e0cc751385.svg",
+    "static/media/close-icon.svg": "/games/static/media/close-icon.a4386296f8cc40bc7a8e4adbe73d8d2e.svg",
+    "static/media/menu-icon.svg": "/games/static/media/menu-icon.5bae51287519dcfc9ace7858eeb67b83.svg",
+    "main.6a06b7a1.css.map": "/games/static/css/main.6a06b7a1.css.map",
+    "main.a1102c35.js.map": "/games/static/js/main.a1102c35.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/games/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6a06b7a1.css",
-    "static/js/main.2b9acf6e.js"
+    "static/js/main.a1102c35.js"
   ]
 }
